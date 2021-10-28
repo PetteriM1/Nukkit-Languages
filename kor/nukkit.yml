@@ -4,9 +4,9 @@
 
 settings:
  #다국어 설정
- #사용 가능: eng, chs, cht, jpn, rus, spa, pol, bra, kor, ukr, deu, ltu
+ #사용 가능: eng, chs, cht, jpn, rus, spa, pol, bra, kor, ukr, deu, ltu, cze
  language: "kor"
- #모든 문자열을 서버 로케일로 번역해 전송하거나 기기가 처리할 수 있게 할지 여부
+ #모든 문자열을 서버 로캘로 번역해 전송하거나 기기가 처리할 수 있게 할지 여부
  force-language: false
  shutdown-message: "Server closed"
  #Query를 통한 플러그인 목록 보기를 허용합니다
@@ -107,6 +107,8 @@ player:
  #true로 설정하면, 플레이어 데이터가 players/플레이어 이름.dat으로 저장됩니다
  #false로 설정하면, Nukkit이 플레이어 데이터를 "dat" 파일로 저장하지 않으므로 플러그인에서 무언가를 수행할 수 있습니다.
  save-player-data: true
+ #The time between skin change action in seconds, set to 0 if you dont want the cooldown
+ skin-change-cooldown: 30
  
 aliases:
  #명령어의 별칭
@@ -115,8 +117,13 @@ aliases:
  # savestop: [save-all, stop]
 
 worlds:
- #이 설정들은 server.properties에 있는 생성기 설정을 덮어쓰고 여러 레벨 불러오기를 허용합니다
- #예:
- # world:
- # seed: 404
- # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
+ #Worlds that the server will use. Options are specific to the chosen generator, and may result in broken generation or
+ #be ignored completely.
+ world:
+  seed: 404
+  generator: normal
+  options:
+ nether:
+  seed: my_cool_nether_seed
+  generator: nether
+  options:
